@@ -30,7 +30,8 @@ int main(int argc, char* argv[])
 
   if(datei != NULL)
   {
-    printf("CODE:\n<<< ––––––––BEGIN––––––––– >>>\n\n");
+    vinit();
+    printf("\n<<< ––––––––BEGIN––––––––– >>>\n\n");
     for (int i = 0; (c=fgetc(datei)) != EOF; i++)
     {
       code[i] = c;
@@ -39,7 +40,7 @@ int main(int argc, char* argv[])
     printf("\n<<< –––––––––ENDC––––––––– >>>\n\n");
 
     Parser.parse(code);
-    Parser.print("[ ENDE ]");
+    Parser.print("[ END ]");
   }
   else
   {

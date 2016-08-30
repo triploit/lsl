@@ -106,16 +106,19 @@ public:
       }
     }
 
+    // ALLE GEFUNDENEN ZELLEN AUFLISTEN
     for (int i = 0; i < cmds.size(); i++)
     {
       for (int x = 0; x < cells.size(); x++)
       {
-        if (cmds[i] == cells[i].getName())
+        if (cmds[i] == cells[x].getName())
         {
-          print("Zelle ",cells[i].getName(), " gefunden!");
+          printf("[ SYS ] Zelle %s%s", cells[x].getName().c_str(), " gefunden!\n");
+          x = 0;
         }
       }
     }
+    printf("\n");
 
     printAC();
     return 0;

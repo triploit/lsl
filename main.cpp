@@ -7,11 +7,10 @@
 #include <iostream>
 using namespace std;
 
-#include "cell.cpp"
-#include "valS.cpp"
-#include "sys.cpp"
+#include "cell.hpp"
+#include "valS.hpp"
+#include "sys.hpp"
 #include "parser.cpp"
-
 
 int main(int argc, char* argv[])
 {

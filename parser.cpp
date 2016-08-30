@@ -8,8 +8,8 @@
 #include <vector>
 #include <string>
 
-#include "valS.cpp"
-#include "sys.cpp"
+#include "valS.hpp"
+#include "sys.hpp"
 using namespace std;
 
 class Parser

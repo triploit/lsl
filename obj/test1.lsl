@@ -1,3 +1,3 @@
 main:
-  mov   "Hallo Welt",  %za;
-  lsl   ag, %za;
+  mov   "Hallo Welt", %za;
+  do    ag, %za;

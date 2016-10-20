@@ -31,6 +31,7 @@ int main(int argc, char* argv[])
   if(datei != NULL)
   {
     vinit();
+    Kwords.kinit();
     printf("\n<<< ––––––––BEGIN––––––––– >>>\n\n");
     for (int i = 0; (c=fgetc(datei)) != EOF; i++)
     {
@@ -40,7 +41,7 @@ int main(int argc, char* argv[])
     printf("\n<<< –––––––––ENDC––––––––– >>>\n\n");
 
     Parser.parse(code);
-    Parser.print("[ END ]");
+    Parser.print("\n[ END ]");
   }
   else
   {

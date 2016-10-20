@@ -22,7 +22,31 @@ public:
     // I so lange höchzählen bis die "Höhe" von CMDS erreicht wurde
     for(int i = 0; i < cmds.size(); i++)
     {
-      print("[ SYS ] Befehl ("+to_string(i)+"): "+cmds[i]); // Alle Befehle und Argumente ausgeben
+      print("[ SYS ] Befehl ("+to_string(i+1)+"): "+cmds[i]); // Alle Befehle und Argumente ausgeben
+    }
+  }
+
+  void execute(vector<string> cmds)
+  {
+    for(int i = 0; i < cmds.size(); i++)
+    {
+      for (int x = 0; x < Kwords.allKeyWords.size(); x++)
+      {
+        if (cmds[i] == Kwords.allKeyWords[x].getName())
+        {
+          kword k = Kwords.allKeyWords[x];
+          if ((k.getName() == "lsl" || k.getName() == "mov") && (i+2) < cmds.size())
+          {
+            printf("[ SYS ] Funkion %s%s%s%s%s%s", Kwords.allKeyWords[x].getName().c_str()," mit ",cmds[i+1].c_str()," und ",cmds[i+2].c_str()," ausgeführt!\n");
+            k.runFunction(cmds[i+1], cmds[i+2]);
+            i = i + 2;
+          }
+          else
+          {
+            printf("[ ERR ] Error! KeyWord wurde noch nicht hinzugefügt!\n");
+          }
+        }
+      }
     }
   }
 
@@ -40,7 +64,7 @@ public:
     string str = ""; // -> Der aktuelle Befehl
     int cmdc = 0; // -> Der Befehlszähler
 
-    // VERGLEICHBAR MIT PRÄPROZESSOR, SOÄTER NÖTIG FÜR GOTO
+    // VERGLEICHBAR MIT PRÄPROZESSOR, SPÄTER NÖTIG FÜR GOTO
     for (int i = 0; code[i] != '\0'; i++)
     {
       toupper(c);
@@ -68,14 +92,18 @@ public:
         for (x = i+1; code[x] != '\"'; x++)
         {
           str+=code[x];
-          i = x;
+          i = x+1;
+          //printf("Str: %s\n", str.c_str());
         }
         i++;
+        //printf("C: %c\n", code[i]);
 
         //STRING EINFÜGEN
         cmds.push_back(str);
+
         str = "";
       }
+
       // NACH TRENNZEICHEN TRENNEN
       if (c == ' ' || c == ']' || c == '\t' || c == ';' || c == '\n' || c == '@' || c == ',' || c == '\0')
       {
@@ -102,7 +130,7 @@ public:
     {
       if (cmds[i] == "\"")
       {
-        cmds[i] = _REMOVED;
+        cmds[i] = cmds[i-1];
       }
     }
 
@@ -120,7 +148,7 @@ public:
     }
     printf("\n");
 
-    printAC();
+    execute(cmds);
     return 0;
   }
 

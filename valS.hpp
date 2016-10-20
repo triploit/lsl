@@ -8,6 +8,7 @@ using namespace std;
 
 vector<cell> cells;
 
+
 void vinit()
 {
   cell za;
@@ -139,5 +140,6 @@ void vinit()
   cells.push_back(zy);
   cells.push_back(zz);
 }
+#include "sys.hpp"
 
 #endif

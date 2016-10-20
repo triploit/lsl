@@ -9,6 +9,8 @@ class cell
 private:
   string name;
   string alias;
+  bool isstr;
+  bool isint;
 
   int ivalue = 0;
   string svalue = "";
@@ -52,6 +54,38 @@ public:
   void setAlias(string s)
   {
     alias = s;
+  }
+
+  void setInt()
+  {
+    if (isstr)
+    {
+      printf("[ SYS ] Diese Zelle \"%s\" ist schon ein String!", name.c_str());
+      return;
+    }
+
+    isstr = true;
+  }
+
+  void setString()
+  {
+    if (isint)
+    {
+      printf("[ SYS ] Diese Zelle \"%s\" ist schon ein Integer!", name.c_str());
+      return;
+    }
+
+    isstr = true;
+  }
+
+  bool isInt()
+  {
+    return isint;
+  }
+
+  bool isString()
+  {
+    return isstr;
   }
 };
 

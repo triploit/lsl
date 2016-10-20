@@ -4,7 +4,7 @@ CC = g++
 compile: $(OBJ)
 	@cd obj/
 	@echo [CPP] Link lsl...
-	@$(CC) -fpermissive -W -w -fstack-check -o obj/lsl main.o
+	@$(CC) -fpermissive -W -fstack-check -o obj/lsl main.o
 	@echo [CPP] Finished!
 	@echo "–––––––––––––––––––––––––––"
 	@rm main.o
@@ -13,7 +13,7 @@ main.o:
 	@clear
 	@echo "–––––––––––––––––––––––––––"
 	@echo [CPP] Compile lsl...
-	@$(CC) -fpermissive -W -w -fstack-check -c main.cpp
+	@$(CC) -fpermissive -W -fstack-check -c main.cpp
 	@echo [CPP] Finished!
 	@echo "–––––––––––––––––––––––––––"
 
